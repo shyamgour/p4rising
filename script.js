@@ -19,3 +19,15 @@ if (slides.length > 0) {
         slides[currentSlide].classList.add('active');
     }, 3500);
 }
+
+// Optional: Animate footer sections on scroll
+const footerColumns = document.querySelectorAll('.footer-column');
+const footerObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate');
+    }
+  });
+}, { threshold: 0.1 });
+
+footerColumns.forEach(col => footerObserver.observe(col));
